@@ -19,5 +19,41 @@ function greetUser(name, greeting = "Hello", role) {
     }
     return `${greeting}, ${name}!`;
 }
-const message = greetUser("Tusar", "Welcome to TypeScript!", 'Web Developer');
+const message = greetUser("Tusar", "Welcome to TypeScript!", "Web Developer");
 console.log(message);
+// Webflow API call Helper Example
+const fetchWebflowData = (category, limit = 10, sortBy) => {
+    return `${limit} items fetched from ${category} ${sortBy ? `sorted by ${sortBy}` : ""}`;
+};
+const webflowData = fetchWebflowData("Portfolio", 5, "price");
+console.log(webflowData);
+// when return type void
+const logAnimation = (animationName) => {
+    console.log(`Animation ${animationName} started.`);
+};
+logAnimation("FadeIn");
+// First Problem
+const formatPrice = (amount, currency = '$') => {
+    return `${currency}${amount.toFixed(2)}`;
+};
+const fruitPrice = formatPrice(10.5, '€');
+console.log(fruitPrice);
+// Second Problem
+const logError = (message) => {
+    console.log(`Error: ${message}`);
+};
+logError("An unexpected error occurred.");
+// Third Problem
+const applyToNumbers = (numbers, callback) => {
+    return numbers.map(callback);
+};
+const numbers = [1, 2, 3, 4, 5];
+const squaredNumbers = applyToNumbers(numbers, (n) => n * n);
+console.log(squaredNumbers);
+// Fourth Problem (My Creative Problem)
+const applyToString = (numbers, callback) => {
+    return numbers.map(callback);
+};
+const flower = ['Rose', 'Tulip', 'Lily', 'Daisy', 'Sunflower'];
+const squareNumbers = applyToString(flower, (n) => n + ' is a beautiful flower');
+console.log(squareNumbers);
