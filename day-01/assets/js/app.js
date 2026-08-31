@@ -1,59 +1,85 @@
 "use strict";
-// // Topic: 01 (Primitive Types: String, Number, Boolean, Null, Undefined, Symbol, BigInt)
-// let userName: string = 'Tusar';
-// let experience: number = 4;
-// let isFreelancing: boolean = false;
-// const calculateDiscount = (price: number, discountPercent: number): number => {
-//     return price - (price * discountPercent / 100);
+// // // Topic: 01 (Primitive Types: String, Number, Boolean, Null, Undefined, Symbol, BigInt)
+// // let userName: string = 'Tusar';
+// // let experience: number = 4;
+// // let isFreelancing: boolean = false;
+// // const calculateDiscount = (price: number, discountPercent: number): number => {
+// //     return price - (price * discountPercent / 100);
+// // }
+// // const discountedPrice = calculateDiscount(100, "10%");
+// // console.log(discountedPrice);
+// // const calculateDiscount1 = (price: any, discountPercent: any): any => {
+// //     return price - (price * discountPercent / 100);
+// // }
+// // const discountedPrice1 = calculateDiscount1(100, "10%");
+// // console.log(discountedPrice1);
+// function greetUser(
+//   name: string,
+//   greeting: string = "Hello",
+//   role?: string,
+// ): string {
+//   if (role) {
+//     return `${greeting}, ${name} (${role})!`;
+//   }
+//   return `${greeting}, ${name}!`;
 // }
-// const discountedPrice = calculateDiscount(100, "10%");
-// console.log(discountedPrice);
-// const calculateDiscount1 = (price: any, discountPercent: any): any => {
-//     return price - (price * discountPercent / 100);
+// const message = greetUser("Tusar", "Welcome to TypeScript!", "Web Developer");
+// console.log(message);
+// // Webflow API call Helper Example
+// const fetchWebflowData = (
+//   category: string,
+//   limit: number = 10,
+//   sortBy?: string,
+// ): string => {
+//   return `${limit} items fetched from ${category} ${sortBy ? `sorted by ${sortBy}` : ""}`;
+// };
+// const webflowData = fetchWebflowData("Portfolio", 5, "price");
+// console.log(webflowData);
+// // when return type void
+// const logAnimation = (animationName: string): void => {
+//   console.log(`Animation ${animationName} started.`);
 // }
-// const discountedPrice1 = calculateDiscount1(100, "10%");
-// console.log(discountedPrice1);
-function greetUser(name, greeting = "Hello", role) {
-    if (role) {
-        return `${greeting}, ${name} (${role})!`;
-    }
-    return `${greeting}, ${name}!`;
-}
-const message = greetUser("Tusar", "Welcome to TypeScript!", "Web Developer");
-console.log(message);
-// Webflow API call Helper Example
-const fetchWebflowData = (category, limit = 10, sortBy) => {
-    return `${limit} items fetched from ${category} ${sortBy ? `sorted by ${sortBy}` : ""}`;
+// logAnimation("FadeIn");
+// // First Problem
+// const formatPrice = (amount: number, currency : string = '$'): string => {
+//     return `${currency}${amount.toFixed(2)}`;
+// }
+// const fruitPrice = formatPrice(10.5, '€');
+// console.log(fruitPrice);
+// // Second Problem
+// const logError = (message: string): void => {
+//     console.log(`Error: ${message}`);
+// };
+// logError("An unexpected error occurred.");
+// // Third Problem
+// const applyToNumbers = (numbers: number[], callback: (n : number) => number): number[] => {
+//     return numbers.map(callback);
+// }   
+// const numbers = [1, 2, 3, 4, 5];
+// const squaredNumbers = applyToNumbers(numbers, (n) => n * n);
+// console.log(squaredNumbers);
+// // Fourth Problem (My Creative Problem)
+// const applyToString = (numbers: string[], callback: (n : string) => string): string[] => {
+//     return numbers.map(callback);
+// };
+// const flower = ['Rose', 'Tulip', 'Lily', 'Daisy', 'Sunflower'];
+// const squareNumbers = applyToString(flower, (n) => n + ' is a beautiful flower');
+// console.log(squareNumbers);
+let skills = ['JavaScript', 'TypeScript', 'React', 'Node.js'];
+let scores = [85, 90, 95, 80];
+let anotherSkills = ['JavaScript', 'TypeScript', 'React', 'Node.js'];
+let userInfo = ['Tusar', 123456789, 'Jannat'];
+console.log(userInfo);
+const getAverageScore = (scores) => {
+    const total = scores.reduce((acc, score) => acc + score, 0);
+    return total / scores.length;
 };
-const webflowData = fetchWebflowData("Portfolio", 5, "price");
-console.log(webflowData);
-// when return type void
-const logAnimation = (animationName) => {
-    console.log(`Animation ${animationName} started.`);
+const averageScore = getAverageScore(scores);
+console.log(`Average Score: ${averageScore}`);
+const useToggle = (initial) => {
+    let state = initial;
+    const toggle = () => state = ++state;
+    return [state, toggle];
 };
-logAnimation("FadeIn");
-// First Problem
-const formatPrice = (amount, currency = '$') => {
-    return `${currency}${amount.toFixed(2)}`;
-};
-const fruitPrice = formatPrice(10.5, '€');
-console.log(fruitPrice);
-// Second Problem
-const logError = (message) => {
-    console.log(`Error: ${message}`);
-};
-logError("An unexpected error occurred.");
-// Third Problem
-const applyToNumbers = (numbers, callback) => {
-    return numbers.map(callback);
-};
-const numbers = [1, 2, 3, 4, 5];
-const squaredNumbers = applyToNumbers(numbers, (n) => n * n);
-console.log(squaredNumbers);
-// Fourth Problem (My Creative Problem)
-const applyToString = (numbers, callback) => {
-    return numbers.map(callback);
-};
-const flower = ['Rose', 'Tulip', 'Lily', 'Daisy', 'Sunflower'];
-const squareNumbers = applyToString(flower, (n) => n + ' is a beautiful flower');
-console.log(squareNumbers);
+const [result, toggle] = useToggle(10);
+console.log(toggle());
