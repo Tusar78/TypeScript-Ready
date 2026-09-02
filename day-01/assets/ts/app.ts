@@ -225,39 +225,127 @@
 // console.log(themeMessage);  
 
 
-// Problem One
-const formatValue = (value: number | string): string => {
-    if (typeof value === 'number') {
-        return `The number is ${value.toFixed(2)}`;
-    } else {
-        return `The string is "${value.toUpperCase()}"`;
-    }
+// // Problem One
+// const formatValue = (value: number | string): string => {
+//     if (typeof value === 'number') {
+//         return `The number is ${value.toFixed(2)}`;
+//     } else {
+//         return `The string is "${value.toUpperCase()}"`;
+//     }
+// }
+
+// const formattedNumber = formatValue(123.456);
+// console.log(formattedNumber);
+
+// const formattedString = formatValue("tusar love to Jannat");
+// console.log(formattedString);
+
+// // Problem Two
+// type Shape = 
+// | { kind: "circle"; radius: number }
+// | { kind: "rectangle"; width: number; height: number };
+
+
+// const getArea = (shape: Shape): number => {
+//     if (shape.kind === "circle") {
+//         return Math.PI * (shape.radius * shape.radius);
+//     } else if (shape.kind === "rectangle") {
+//         return shape.width * shape.height;
+//     } else {
+//         throw new Error("Unknown shape");
+//     }
+// }
+
+// const circleArea = getArea({ kind: "circle", radius: 5 });
+// console.log(`Circle Area: ${circleArea.toFixed(2)}`);
+
+// const rectangleArea = getArea({ kind: "rectangle", width: 10, height: 5 });
+// console.log(`Rectangle Area: ${rectangleArea.toFixed(2)}`);
+
+
+
+// enum Direction {
+//   Up,
+//   Down,
+//   Left,
+//   Right
+// }
+
+// let move: Direction = Direction.Down;
+// console.log(move);
+
+// enum Status {
+//   Loading = "LOADING",
+//   Success = "SUCCESS",
+//   Error = "ERROR"
+// }
+
+// function handleStatus(status: Status) {
+//   console.log(status); // "LOADING", "SUCCESS" ইত্যাদি — debug করা সহজ
+// }
+
+// handleStatus(Status.Loading);
+
+
+// type ID = 'abc123' | 'xyz456';
+
+// const fetchData = (id: ID): string => {
+//   if (id === 'abc123') {
+//     return "Data for abc123";
+//     } else if (id === 'xyz456') {
+//     return "Data for xyz456";
+//     } else {
+//     throw new Error("Invalid ID");
+//   } 
+// }
+//   const result1 = fetchData('abc123');
+//   console.log(result1); 
+
+
+
+enum OrderStatus {
+    Pending = "PENDING",          
+    Shipped = "SHIPPED",
+    Delivered = "DELIVERED",
+    Cancelled = "CANCELLED"
 }
 
-const formattedNumber = formatValue(123.456);
-console.log(formattedNumber);
+const updateOrderStatus = (status: OrderStatus): string => {
 
-const formattedString = formatValue("tusar love to Jannat");
-console.log(formattedString);
+    let resultStatus = '';
+    switch (status) {
+        case OrderStatus.Pending:
+            resultStatus = "Order is pending.";
+            break;
+        case OrderStatus.Shipped:
+            resultStatus = "Order has been shipped.";      
+            break;
+        case OrderStatus.Delivered:
+            resultStatus =  "Order has been delivered.";
+            break;
+        case OrderStatus.Cancelled:
+            resultStatus =  "Order has been cancelled.";
+            break;
+        default:
+            throw new Error("Invalid order status");
+        }
 
-// Problem Two
-type Shape = 
-| { kind: "circle"; radius: number }
-| { kind: "rectangle"; width: number; height: number };
+    return resultStatus;
+};
 
 
-const getArea = (shape: Shape): number => {
-    if (shape.kind === "circle") {
-        return Math.PI * (shape.radius * shape.radius);
-    } else if (shape.kind === "rectangle") {
-        return shape.width * shape.height;
-    } else {
-        throw new Error("Unknown shape");
-    }
+const orderMessage = updateOrderStatus(OrderStatus.Shipped);
+console.log(orderMessage);
+
+console.log(Object.values(OrderStatus));   
+
+
+function wrapInArray<T>(item: T): T[] {
+    return [item];
 }
 
-const circleArea = getArea({ kind: "circle", radius: 5 });
-console.log(`Circle Area: ${circleArea.toFixed(2)}`);
+const firstNumber = wrapInArray(1);
+console.log(firstNumber); 
 
-const rectangleArea = getArea({ kind: "rectangle", width: 10, height: 5 });
-console.log(`Rectangle Area: ${rectangleArea.toFixed(2)}`);
+const firstString = wrapInArray("Hello, TypeScript!");
+console.log(firstString); 
