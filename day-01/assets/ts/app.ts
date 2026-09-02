@@ -171,55 +171,93 @@
 // const result1 = fetchData("abc123");
 // console.log(result1);   
 
+// // Problem One
+// type Address = {
+//     street: string,
+//     city: string,
+// }
+
+// interface Company {
+//     name: string,
+//     address: Address,
+// }
+
+// const company: Company = {
+//     name: "Innovation Teach",
+//     address: {
+//         street: "Dhaka, Bangladesh",
+//         city: "Mirpur-7"
+//     }
+// };
+
+// console.log(`Company Name: ${company.name}`);
+
+
+// // problem Two
+// interface Vehicle {
+//     brand: string;
+// }
+
+// interface Car extends Vehicle {
+//     doors: string;
+// }
+
+// const myCar: Car = {
+//     brand: "Toyota",
+//     doors: "4"
+// };  
+
+// console.log(`Car Brand: ${myCar.brand}, Doors: ${myCar.doors}`);
+
+// // Problem Three
+// type Theme = "light" | "dark" | "colorful";
+// const applyTheme = (theme: Theme): string => {
+//     if (theme === "light") {
+//         return "Applying light theme";
+//     } else if (theme === "dark") {
+//         return "Applying dark theme";
+//     } else {
+//         return "Applying colorful theme";
+//     }
+// }
+
+// const themeMessage = applyTheme("dark");
+// console.log(themeMessage);  
+
+
 // Problem One
-type Address = {
-    street: string,
-    city: string,
-}
-
-interface Company {
-    name: string,
-    address: Address,
-}
-
-const company: Company = {
-    name: "Innovation Teach",
-    address: {
-        street: "Dhaka, Bangladesh",
-        city: "Mirpur-7"
-    }
-};
-
-console.log(`Company Name: ${company.name}`);
-
-
-// problem Two
-interface Vehicle {
-    brand: string;
-}
-
-interface Car extends Vehicle {
-    doors: string;
-}
-
-const myCar: Car = {
-    brand: "Toyota",
-    doors: "4"
-};  
-
-console.log(`Car Brand: ${myCar.brand}, Doors: ${myCar.doors}`);
-
-// Problem Three
-type Theme = "light" | "dark" | "colorful";
-const applyTheme = (theme: Theme): string => {
-    if (theme === "light") {
-        return "Applying light theme";
-    } else if (theme === "dark") {
-        return "Applying dark theme";
+const formatValue = (value: number | string): string => {
+    if (typeof value === 'number') {
+        return `The number is ${value.toFixed(2)}`;
     } else {
-        return "Applying colorful theme";
+        return `The string is "${value.toUpperCase()}"`;
     }
 }
 
-const themeMessage = applyTheme("dark");
-console.log(themeMessage);  
+const formattedNumber = formatValue(123.456);
+console.log(formattedNumber);
+
+const formattedString = formatValue("tusar love to Jannat");
+console.log(formattedString);
+
+// Problem Two
+type Shape = 
+| { kind: "circle"; radius: number }
+| { kind: "rectangle"; width: number; height: number };
+
+
+const getArea = (shape: Shape): number => {
+    if (shape.kind === "circle") {
+        return Math.PI * (shape.radius * shape.radius);
+    } else if (shape.kind === "rectangle") {
+        return shape.width * shape.height;
+    } else {
+        throw new Error("Unknown shape");
+    }
+}
+
+const circleArea = getArea({ kind: "circle", radius: 5 });
+console.log(`Circle Area: ${circleArea.toFixed(2)}`);
+
+const rectangleArea = getArea({ kind: "rectangle", width: 10, height: 5 });
+console.log(`Rectangle Area: ${rectangleArea.toFixed(2)}`);
