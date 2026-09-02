@@ -303,49 +303,87 @@
 
 
 
-enum OrderStatus {
-    Pending = "PENDING",          
-    Shipped = "SHIPPED",
-    Delivered = "DELIVERED",
-    Cancelled = "CANCELLED"
+// enum OrderStatus {
+//     Pending = "PENDING",          
+//     Shipped = "SHIPPED",
+//     Delivered = "DELIVERED",
+//     Cancelled = "CANCELLED"
+// }
+
+// const updateOrderStatus = (status: OrderStatus): string => {
+
+//     let resultStatus = '';
+//     switch (status) {
+//         case OrderStatus.Pending:
+//             resultStatus = "Order is pending.";
+//             break;
+//         case OrderStatus.Shipped:
+//             resultStatus = "Order has been shipped.";      
+//             break;
+//         case OrderStatus.Delivered:
+//             resultStatus =  "Order has been delivered.";
+//             break;
+//         case OrderStatus.Cancelled:
+//             resultStatus =  "Order has been cancelled.";
+//             break;
+//         default:
+//             throw new Error("Invalid order status");
+//         }
+
+//     return resultStatus;
+// };
+
+
+// const orderMessage = updateOrderStatus(OrderStatus.Shipped);
+// console.log(orderMessage);
+
+// console.log(Object.values(OrderStatus));   
+
+
+// function wrapInArray<T>(item: T): T[] {
+//     return [item];
+// }
+
+// const firstNumber = wrapInArray(1);
+// console.log(firstNumber); 
+
+// const firstString = wrapInArray("Hello, TypeScript!");
+// console.log(firstString); 
+
+interface Company {
+    name: string;
+    address: string;
+    id: number;
+    foundedYear: number;
 }
 
-const updateOrderStatus = (status: OrderStatus): string => {
-
-    let resultStatus = '';
-    switch (status) {
-        case OrderStatus.Pending:
-            resultStatus = "Order is pending.";
-            break;
-        case OrderStatus.Shipped:
-            resultStatus = "Order has been shipped.";      
-            break;
-        case OrderStatus.Delivered:
-            resultStatus =  "Order has been delivered.";
-            break;
-        case OrderStatus.Cancelled:
-            resultStatus =  "Order has been cancelled.";
-            break;
-        default:
-            throw new Error("Invalid order status");
-        }
-
-    return resultStatus;
+type CompanyPreview = Pick<Company, "name" | "foundedYear">;
+const companyPreview: CompanyPreview = {
+    name: "Innovation Teach",
+    foundedYear: 2020
 };
+console.log(companyPreview);
 
 
-const orderMessage = updateOrderStatus(OrderStatus.Shipped);
-console.log(orderMessage);
+type CreateCompanyInput = Omit<Company, "id">;
+const newCompany: CreateCompanyInput = {
+    name: "Tech Innovators",
+    address: "123 Tech Street",
+    foundedYear: 2021
+};
+console.log(newCompany);        
 
-console.log(Object.values(OrderStatus));   
+type UpdateCompanyInput = Partial<Company>;
+const updatedCompany: UpdateCompanyInput = {
+    name: "Updated Tech Innovators",
+    foundedYear: 2022
+};
+console.log(updatedCompany);    
 
 
-function wrapInArray<T>(item: T): T[] {
-    return [item];
-}
-
-const firstNumber = wrapInArray(1);
-console.log(firstNumber); 
-
-const firstString = wrapInArray("Hello, TypeScript!");
-console.log(firstString); 
+type SafeUpdatedCompanyInput = Partial<Omit<Company, "id">>;
+const safeUpdatedCompany: SafeUpdatedCompanyInput = {
+    name: "Safe Updated Tech Innovators",   
+    foundedYear: 2023
+};
+console.log(safeUpdatedCompany);
