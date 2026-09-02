@@ -121,35 +121,105 @@
 
 
 // Problem One
-const getTopSkills = (skills: string[]): string => {
-    let bigString: string = '';
-    skills.map(skill => {
-        if (bigString.length < skill.length) {
-            bigString = skill;
-        }
-    });
-    return bigString;
+// const getTopSkills = (skills: string[]): string => {
+//     let bigString: string = '';
+//     skills.map(skill => {
+//         if (bigString.length < skill.length) {
+//             bigString = skill;
+//         }
+//     });
+//     return bigString;
+// }
+
+// let skills: string[] = ['JavaScript', 'Next.js', 'React', 'Node.js', 'Python', 'C++'];
+// const topSkills = getTopSkills(skills);
+// console.log(topSkills); 
+
+
+// // Problem Two
+// const createCordinate = (x: number, y: number): [number, number] => {
+//     return [x, y];
+// }
+
+// const cordinate = createCordinate(10, 20);
+// console.log(cordinate); 
+
+// // Problem Three
+// const parseFullName = (fullName: string): [string, string] => {
+//     const [firstName, lastName] = fullName.split(' ');
+//     return [firstName, lastName];
+// }
+
+// const fullName = "Tusar Ali";
+// const [firstName, lastName] = parseFullName(fullName);
+// console.log(`First Name: ${firstName}, Last Name: ${lastName}`);
+
+
+// type Status = "loading" | "success" | "error"; 
+// type ID = string | number;
+
+// const fetchData = (id: ID): Status => {
+//     if (typeof id === "string") {
+//         console.log(`Fetching data for string ID: ${id}`);
+//     } else {
+//         console.log(`Fetching data for numeric ID: ${id}`);
+//     }
+//     // Simulating a fetch operation
+//     return "success";
+// }   
+
+// const result1 = fetchData("abc123");
+// console.log(result1);   
+
+// Problem One
+type Address = {
+    street: string,
+    city: string,
 }
 
-let skills: string[] = ['JavaScript', 'Next.js', 'React', 'Node.js', 'Python', 'C++'];
-const topSkills = getTopSkills(skills);
-console.log(topSkills); 
-
-
-// Problem Two
-const createCordinate = (x: number, y: number): [number, number] => {
-    return [x, y];
+interface Company {
+    name: string,
+    address: Address,
 }
 
-const cordinate = createCordinate(10, 20);
-console.log(cordinate); 
+const company: Company = {
+    name: "Innovation Teach",
+    address: {
+        street: "Dhaka, Bangladesh",
+        city: "Mirpur-7"
+    }
+};
+
+console.log(`Company Name: ${company.name}`);
+
+
+// problem Two
+interface Vehicle {
+    brand: string;
+}
+
+interface Car extends Vehicle {
+    doors: string;
+}
+
+const myCar: Car = {
+    brand: "Toyota",
+    doors: "4"
+};  
+
+console.log(`Car Brand: ${myCar.brand}, Doors: ${myCar.doors}`);
 
 // Problem Three
-const parseFullName = (fullName: string): [string, string] => {
-    const [firstName, lastName] = fullName.split(' ');
-    return [firstName, lastName];
+type Theme = "light" | "dark" | "colorful";
+const applyTheme = (theme: Theme): string => {
+    if (theme === "light") {
+        return "Applying light theme";
+    } else if (theme === "dark") {
+        return "Applying dark theme";
+    } else {
+        return "Applying colorful theme";
+    }
 }
 
-const fullName = "Tusar Ali";
-const [firstName, lastName] = parseFullName(fullName);
-console.log(`First Name: ${firstName}, Last Name: ${lastName}`);
+const themeMessage = applyTheme("dark");
+console.log(themeMessage);  
